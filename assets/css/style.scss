@@ -1,0 +1,12 @@
+$mainColor: #0a8acd;
+$subColor: #dd3333;
+
+.testBox {
+    width: 200px;
+    height: 200px;
+    border: 1px solid $subColor;
+    p {
+        color: $mainColor;
+    }
+}
+
