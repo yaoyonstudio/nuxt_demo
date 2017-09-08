@@ -39,6 +39,7 @@ html
 .container {
   width: 100%;
   height: 100%;
+  min-width: 800px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

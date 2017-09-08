@@ -1,14 +1,18 @@
 <template>
   <section class="posts">
-    posts Page
+    <loading v-if="busy" />
+    <post-item v-for="(item, index) in posts" :key="index" :data="item"></post-item>
   </section>
 </template>
 
 <script>
+import PostItem from '~/components/PostItem'
+import Loading from '~/components/Loading'
 
 export default {
   data () {
     return {
+      busy: true,
       posts: []
     }
   },
@@ -26,17 +30,21 @@ export default {
         }
       }
       getPosts().then((data) => {
-        console.log(data)
+        this.busy = false
         this.posts = data
       })
     }
   },
   components: {
+    PostItem,
+    Loading
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .posts {
+  padding: 40px 0 20px 0;
+  background-color: #fff;
 }
 </style>

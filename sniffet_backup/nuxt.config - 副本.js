@@ -1,5 +1,3 @@
-const axios = require('axios')
-
 module.exports = {
   /*
   ** Headers of the page
@@ -38,20 +36,6 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
-  },
-  generate: {
-    routes: function () {
-      return axios.get('http://www.thatyou.cn/wp-json/wp/v2/posts')
-        .then((res) => {
-          return res.data.map((post) => {
-            post.content = {rendered: null}
-            return {
-              route: '/post/' + post.id,
-              payload: post
-            }
-          })
-        })
     }
   }
 }

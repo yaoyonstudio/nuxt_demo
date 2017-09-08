@@ -7,7 +7,6 @@
 </template>
 
 <script>
-
 export default {
   data () {
     return {
@@ -40,5 +39,8 @@ export default {
       background: #dd3333;
     }
   }
+}
+.nuxt-link-exact-active {
+  background: #dd3333;
 }
 </style>
