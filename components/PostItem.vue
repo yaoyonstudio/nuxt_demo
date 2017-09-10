@@ -33,9 +33,12 @@ export default {
   .postItemRight {
     flex: 1;
     h3 {
+      font-size: 20px;
       margin-bottom: 10px;
     }
-    p {}
+    p {
+      color: #666;
+    }
   }
 }
 </style>

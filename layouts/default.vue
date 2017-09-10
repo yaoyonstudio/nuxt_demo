@@ -1,9 +1,11 @@
 <template>
-  <div class="container">
-    <my-header></my-header>
-    <nuxt class="main" />
-    <my-footer></my-footer>
-  </div>
+  <transition name="layout" mode="out-in">
+    <div class="container">
+      <my-header></my-header>
+      <nuxt class="main" />
+      <my-footer></my-footer>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -19,23 +21,6 @@ export default {
 </script>
 
 <style>
-html
-{
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-*, *:before, *:after
-{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 .container {
   width: 100%;
   height: 100%;
@@ -47,11 +32,12 @@ html
   justify-content: space-between;
 }
 .main {
-  margin: 0 auto;
+  margin: 12px auto;
   width: 100%;
   height: 100%;
   flex: 1;
   max-width: 1200px;
+  overflow-x: hidden;
   background: #f8f8f8;
 }
 </style>

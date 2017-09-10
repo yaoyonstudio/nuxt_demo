@@ -18,6 +18,13 @@ import Loading from '~/components/Loading'
 let payloadData = null
 
 export default {
+  layout: 'content_layout',
+  // transition (to, from) {
+  //   console.log('to:', to)
+  //   console.log('from:', from)
+  //   if (!from) return 'slide-left'
+  //   return +to.query.page < +from.query.page ? 'slide-right' : 'slide-left'
+  // },
   validate ({ params }) {
     // Must be a number
     return /^\d+$/.test(params.id)
@@ -31,9 +38,17 @@ export default {
       // console.log('no payload')
       return axios.get('http://www.thatyou.cn/wp-json/wp/v2/posts/' + params.id)
         .then((res) => {
-          console.log('res:', res)
           return {data: res.data}
         })
+    }
+  },
+  head () {
+    return {
+      title: this.data.title.rendered,
+      meta: [
+        { hid: 'keywords', name: 'keywords', content: this.data.title.rendered },
+        { hid: 'description', name: 'description', content: this.data.title.rendered }
+      ]
     }
   },
   data () {
@@ -47,13 +62,21 @@ export default {
   created () {
     let that = this
     if (typeof window !== 'undefined') {
-      let id = document.querySelector('#id').value
-      if(!payloadData) {
-        axios.get('http://www.thatyou.cn/wp-json/wp/v2/posts/' + id)
-        .then((res) => {
+      let idEl = document.querySelector('#id')
+      if (!payloadData && idEl && idEl.value) {
+        this.getPost(idEl.value).then((res) => {
+          that.data = res.data
+        })
+      } else if (this.$route && this.$route.params.id) {
+        this.getPost(this.$route.params.id).then((res) => {
           that.data = res.data
         })
       }
+    }
+  },
+  methods: {
+    getPost (id) {
+      return axios.get('http://www.thatyou.cn/wp-json/wp/v2/posts/' + id)
     }
   },
   components: {
@@ -64,7 +87,6 @@ export default {
 
 <style lang="scss" scoped>
 .post {
-  padding: 40px 40px;
   .postMain {
     .postTitle {
       text-align: center;

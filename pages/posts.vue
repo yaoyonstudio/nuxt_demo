@@ -6,10 +6,18 @@
 </template>
 
 <script>
+import axios from 'axios'
 import PostItem from '~/components/PostItem'
 import Loading from '~/components/Loading'
 
 export default {
+  layout: 'content_layout',
+  // transition (to, from) {
+  //   console.log('to:', to)
+  //   console.log('from:', from)
+  //   if (!from) return 'slide-left'
+  //   return +to.query.page < +from.query.page ? 'slide-right' : 'slide-left'
+  // },
   data () {
     return {
       busy: true,
@@ -21,17 +29,24 @@ export default {
   },
   methods: {
     getPosts () {
-      async function getPosts () {
-        try {
-          let res = await fetch('http://www.thatyou.cn/wp-json/wp/v2/posts')
-          return await res.json()
-        } catch (err) {
-          console.log(err)
+      // async function getPosts () {
+      //   try {
+      //     let res = await fetch('http://www.thatyou.cn/wp-json/wp/v2/posts')
+      //     return await res.json()
+      //   } catch (err) {
+      //     console.log(err)
+      //   }
+      // }
+      // getPosts().then((data) => {
+      //   this.busy = false
+      //   this.posts = data
+      // })
+      let that = this
+      axios.get('http://www.thatyou.cn/wp-json/wp/v2/posts').then((res) => {
+        if (res.status === 200 && res.data) {
+          this.busy = false
+          that.posts = res.data
         }
-      }
-      getPosts().then((data) => {
-        this.busy = false
-        this.posts = data
       })
     }
   },
@@ -44,7 +59,6 @@ export default {
 
 <style lang="scss" scoped>
 .posts {
-  padding: 40px 0 20px 0;
   background-color: #fff;
 }
 </style>

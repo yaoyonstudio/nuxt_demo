@@ -13,7 +13,8 @@ export default {
       menus: [
         {'id': 1, 'title': 'Home', 'link': '/'},
         {'id': 2, 'title': 'Post', 'link': '/posts'},
-        {'id': 3, 'title': 'Test', 'link': '/test'}
+        {'id': 3, 'title': 'Admin', 'link': '/admin'},
+        {'id': 4, 'title': 'Test', 'link': '/test'}
       ]
     }
   }
@@ -25,7 +26,6 @@ export default {
   width: 100%;
   background: #233B5D;
   ul {
-    padding: 0 10px;
     li {
       width: 72px;
       text-align: center;

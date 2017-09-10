@@ -1,13 +1,31 @@
 <template>
-  <section class="index">
+  <div class="index">
+    <section class="slider_section">
+      <slider :data="sliders" />
+    </section>
     Home Page
-  </section>
+  </div>
 </template>
 
 <script>
+import Slider from '~/components/Slider'
 
 export default {
+  data () {
+    return {
+      sliders: ['/img/s1.jpg', '/img/s2.jpg', '/img/s3.jpg', '/img/s4.jpg']
+    }
+  },
+  head () {
+    return {
+      meta: [
+        { hid: 'keywords', name: 'keywords', content: 'nuxt.js' },
+        { hid: 'description', name: 'description', content: '这是一个用Nuxt.js构建的网站' }
+      ]
+    }
+  },
   components: {
+    Slider
   }
 }
 </script>
