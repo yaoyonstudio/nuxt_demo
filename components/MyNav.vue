@@ -14,7 +14,8 @@ export default {
         {'id': 1, 'title': 'Home', 'link': '/'},
         {'id': 2, 'title': 'Post', 'link': '/posts'},
         {'id': 3, 'title': 'Admin', 'link': '/admin'},
-        {'id': 4, 'title': 'Test', 'link': '/test'}
+        {'id': 4, 'title': 'Register', 'link': '/register'},
+        {'id': 9, 'title': 'Test', 'link': '/test'}
       ]
     }
   }

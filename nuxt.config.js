@@ -30,6 +30,7 @@ module.exports = {
   css: [
     '@/assets/css/style.scss'
   ],
+  js: [],
   // transition: {
   //   name: 'page',
   //   mode: 'out-in'
